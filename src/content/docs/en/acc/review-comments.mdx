@@ -1,0 +1,57 @@
+---
+title: Review & Comments
+description: How to use ACC's review tools for model coordination.
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+import Video from "../../../../components/Video.astro";
+
+On this page I will show you how to use handle reviews, issues and the workflow from both a reviewer and a person who has been assigned review issues. The reviewer will annotate the 2D views using various tools and then assign issues for the assignee to later handle. The assignee path will be to handle the issues, mark them as '
+
+## Leaving a comment as a reviewer
+
+The first flow I am showing is of the person in charge of reviewing the model. In order to add annotations inside of ACC we first need to open the Revit model.
+
+<Steps>
+1. Open the model inside of ACC
+![step one](./img/acc_draw_step_1.png)
+
+2. Click on the **Sheets and Views** icon from the toolbar.
+   ![step one](./img/acc_draw_step_2.png)
+
+3. Click on the '2D' tab
+   ![step one](./img/acc_draw_step_3.png)
+
+4. Select the drawing you would like to leave your comment on.
+   ![step one](./img/acc_draw_step_4.png)
+
+5. Set the **priority** (Critical / Major / Minor).
+   ![step one](./img/acc_draw_step_5.png)
+</Steps>
+
+## Video
+
+<Video
+  src="/videos/review_work_flow.mp4"
+  title="Work flow showing how to leave a review comment"
+/>
+## Responding to Comments
+
+When a comment is assigned to you it will appear in your ACC notification panel.
+
+<Steps>
+  1. Open the comment from your **notifications** or from the **Issues** tab. 2.
+  Review the markup in context on the model. 3. Reply with your resolution or
+  questions. 4. Once resolved, mark the comment as **Closed**.
+</Steps>
+
+## Review Workflow
+
+For formal review cycles (e.g. before issuing for construction), we create a
+**Review** in ACC rather than using ad-hoc comments. This groups all feedback
+into a single trackable session with a deadline.
+
+<Aside type="caution">
+  Do not close a Review until the Project Lead has confirmed all issues are
+  addressed.
+</Aside>

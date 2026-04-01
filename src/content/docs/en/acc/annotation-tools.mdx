@@ -1,0 +1,26 @@
+---
+title: ACC File Structure
+description: How our Autodesk Construction Cloud project files are organised.
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+import ImageZoom from "../../../../components/ImageZoom.astro";
+import accojectTemplate from "./acc_draw_step_1";
+
+## Annotation tools
+
+In order to add annotations inside of ACC we first need to open the Revit model.
+
+<Steps>
+1. Open the model inside of ACC
+![step one](./img/acc_draw_step_1.png)
+
+2. Go to **Manage → Project Location → Location**.
+
+3. Enter the **project address** for the weather station (this does not set
+   coordinates — it is just metadata).
+4. Place the **Survey Point** at the known survey marker using
+   **Specify Coordinates at Point**.
+5. Enter the surveyor's **Easting**, **Northing**, and **Elevation** values.
+6. Confirm the **angle to True North** if the survey provides one.
+   </Steps>

@@ -1,0 +1,48 @@
+/* ---------- Typography ---------- */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  --sl-font: "DM Sans", sans-serif;
+  --sl-font-mono: "JetBrains Mono", monospace;
+
+  /* Accent colour – tweak to match your brand */
+  --sl-color-accent-low: #1a2744;
+  --sl-color-accent: #3b82f6;
+  --sl-color-accent-high: #bfdbfe;
+
+  --sl-content-width: 52rem;
+}
+
+/* Tighten up body text for readability */
+.sl-markdown-content {
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+/* ---------- Video component ---------- */
+.video-embed {
+  position: relative;
+  width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 1.5rem 0;
+}
+
+.video-embed.video-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.video-embed iframe,
+.video-embed video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+}
+
+.video-embed video {
+  object-fit: contain;
+  background: #000;
+}

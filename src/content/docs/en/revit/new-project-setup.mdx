@@ -1,0 +1,53 @@
+---
+title: New Project Setup
+description: Starting a new Revit project with correct coordinates and standards.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Video from '../../../../components/Video.astro';
+
+Getting coordinates right at the start saves enormous pain later — especially
+when models need to align with GIS data or other disciplines.
+
+{/* Replace with your actual video URL when ready */}
+{/* <Video src="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" title="Project setup walkthrough" /> */}
+
+## Before You Start
+
+Make sure you have:
+- The **survey point** coordinates from the surveyor (Easting, Northing, Elevation).
+- The agreed **coordinate system** (e.g. JGD2011 / EPSG:6677).
+- The latest **Revit template** from `05_Templates` in ACC.
+
+## Setting Shared Coordinates
+
+<Steps>
+1. Open the Revit template from ACC.
+2. Go to **Manage → Project Location → Location**.
+3. Enter the **project address** for the weather station (this does not set
+   coordinates — it is just metadata).
+4. Place the **Survey Point** at the known survey marker using
+   **Specify Coordinates at Point**.
+5. Enter the surveyor's **Easting**, **Northing**, and **Elevation** values.
+6. Confirm the **angle to True North** if the survey provides one.
+</Steps>
+
+<Aside type="caution">
+  Revit's internal Project Base Point and Survey Point serve different purposes.
+  The **Survey Point** must match the real-world coordinate — do not move it
+  after other disciplines have linked to your model.
+</Aside>
+
+## Linking to ACC
+
+<Steps>
+1. Save the file locally first to confirm coordinates are correct.
+2. Use **Collaborate → Save to Cloud** to push to ACC under `01_WIP`.
+3. Notify the team in the project channel that the seed model is ready.
+</Steps>
+
+<Aside type="tip">
+  If you need to export this model to GeoPackage later, the coordinate system
+  you set here will be used by the conversion plugin. See the
+  [Revit to GeoPackage guide](/en/plugins/revit-to-geopackage/).
+</Aside>

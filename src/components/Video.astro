@@ -1,0 +1,45 @@
+---
+/**
+ * Usage in .mdx files:
+ *
+ *   import Video from '../../../components/Video.astro';
+ *
+ *   <!-- YouTube -->
+ *   <Video src="https://www.youtube.com/watch?v=dQw4w9WgXcQ" title="Demo" />
+ *
+ *   <!-- Self-hosted -->
+ *   <Video src="/videos/setup-walkthrough.mp4" title="Setup walkthrough" />
+ */
+
+interface Props {
+  src: string;
+  title?: string;
+}
+
+const { src, title = "Video" } = Astro.props;
+
+function youtubeId(url: string): string | null {
+  const match = url.match(
+    /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|shorts\/))([^?&]+)/
+  );
+  return match?.[1] ?? null;
+}
+
+const ytId = youtubeId(src);
+---
+
+<div class="video-embed video-16-9">
+  {ytId ? (
+    <iframe
+      src={`https://www.youtube-nocookie.com/embed/${ytId}`}
+      title={title}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy"
+    />
+  ) : (
+    <video controls preload="metadata">
+      <source src={src} />
+    </video>
+  )}
+</div>
