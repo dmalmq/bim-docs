@@ -1,10 +1,18 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import vercel from "@astrojs/vercel";
 import starlightImageZoom from "starlight-image-zoom";
 
+const prerenderDocs = process.env.NODE_ENV === "production";
+
 export default defineConfig({
+  output: "server",
+  adapter: vercel({
+    middlewareMode: "edge",
+  }),
   integrations: [
     starlight({
+      prerender: prerenderDocs,
       plugins: [starlightImageZoom()],
       title: "BIM Tutorials",
       defaultLocale: "en",
@@ -27,7 +35,6 @@ export default defineConfig({
               translations: { ja: "レビューとコメント" },
               slug: "acc/review-comments",
             },
-            
           ],
         },
         {
