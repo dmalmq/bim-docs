@@ -7,9 +7,7 @@ const prerenderDocs = process.env.NODE_ENV === "production";
 
 export default defineConfig({
   output: "server",
-  adapter: vercel({
-    middlewareMode: "edge",
-  }),
+  adapter: vercel(),
   integrations: [
     starlight({
       prerender: prerenderDocs,
