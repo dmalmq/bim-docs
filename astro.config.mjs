@@ -33,6 +33,11 @@ export default defineConfig({
               translations: { ja: "レビューとコメント" },
               slug: "acc/review-comments",
             },
+            {
+              label: "Issues",
+              translations: { ja: "Issues（課題管理）" },
+              slug: "acc/issues",
+            },
           ],
         },
         {

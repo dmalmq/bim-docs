@@ -3,31 +3,38 @@ title: ACC File Structure
 description: How our Autodesk Construction Cloud project files are organised.
 ---
 
-import { Steps, Aside } from "@astrojs/starlight/components";
+import { Steps, Aside } from '@astrojs/starlight/components';
 
-Our ACC projects follow a consistent folder structure so that every team member
-can find what they need without guessing.
+Our ACC projects follow a consistent folder structure across all projects.
 
-## Top-Level Folders and Files
+## Top-Level Folders
 
-| Folder       | Purpose                                                                |
-| ------------ | ---------------------------------------------------------------------- |
-| `01_REVIT`   | Revit links, Templates and Families etc.                               |
-| `02_DWG`     | All DWG drawings that are not linked inside of the main model          |
-| `03_GDB`     | GDB files and files related to GDB                                     |
-| `04_IMDF`    | IMDF files and files related to IMDF                                   |
-| `05_EXPORTS` | Files sent to people outside of JRC                                    |
-
-| File               | Purpose                                               |
-| ------------------ | ----------------------------------------------------- |
-| `PROJECT_NAME.RVT` | Main Revit model is placed in the root of the project |
-
-## Example Image
-
-![Diagram of folder structure](./img/acc_project_template.png)
+| Folder           | Purpose                                                    |
+| ---------------- | ---------------------------------------------------------- |
+| `01_WIP`         | Work-in-progress models                                    |
+| `02_Shared`      | Models shared for coordination                             |
+| `03_Published`   | Deliverables published for construction                    |
+| `04_Reference`   | Survey data, client documents, and site photos             |
+| `05_Templates`   | Revit templates and family libraries                       |
 
 <Aside type="caution">
-  Make sure all the folders inside both '05_EXPORTS' always have
-  a YYYY-MM-DD date format to keep these folders organized and also easier to
-  compare one review and export to another.
+  Do not save directly to **03_Published**. All deliverables must first go
+  through the review process in `02_Shared`.
+</Aside>
+
+## Creating a New Project
+
+<Steps>
+1. Create the project in the ACC admin panel and assign members.
+2. Copy the folder template from the *BIM Standards* project using the
+   "Copy Folder Structure" feature.
+3. Upload the latest Revit template from `05_Templates` into the new
+   project's `01_WIP` folder.
+4. Configure permissions — restrict `03_Published` to project leaders only.
+</Steps>
+
+<Aside type="tip">
+  For projects using shared coordinates, complete the
+  [Coordinate Setup Guide](/en/revit/new-project-setup/) before starting any
+  modelling.
 </Aside>
