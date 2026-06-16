@@ -1,0 +1,153 @@
+---
+title: ジオリファレンス設定
+description: インポート・エクスポートの前に、RevitGeoSuiteが必要とする座標メタデータを保存する方法。
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+
+RevitGeoSuiteは、地理空間データを正しくインポート・エクスポートするために、
+モデルの座標参照系を把握する必要があります。このガイドでは、そのジオリファレンス
+メタデータを確認して保存する手順を説明します。
+
+設定方法は、モデルにすでに座標系が設定されているかどうかで変わります。
+このページでは、両方のケースを扱います。
+
+- モデルに **すでに** 共有座標が設定されている場合 — RevitGeoSuiteが既存の
+  サーベイポイントとプロジェクト基準点を検出するので、内容を確認して保存します。
+- **新規プロジェクト** でまだ座標系が設定されていない場合 — 座標参照系・
+  エリア・参照グリッドを選択して、サーベイポイントとプロジェクト基準点を
+  ゼロから設定します。
+
+## すでに座標系が設定されているモデル
+
+モデルにすでに共有座標があるとRevitGeoSuiteが判定した場合は、この手順を使います。
+
+<Steps>
+1. **RevitGeoSuite** を開き、**Review Current Setup**（現在の設定を確認）に
+   進みます。サーベイポイントとプロジェクト基準点の両方に読み取り可能な共有座標が
+   ある場合、RevitGeoSuiteは **Existing coordinate setup detected**（既存の座標
+   設定を検出）と表示します。検出された値を確認し、**Confirm existing setup** を
+   クリックします。
+   ![既存の座標設定が検出され、Confirm existing setupボタンがハイライトされたRevitGeoSuiteのReview Current Setup画面](/images/revitgeosuite/georef-existing-1.png)
+
+2. **Confirm Setup**（設定の確認）ステップで、検出された座標と
+   **Coordinate Reference System**（座標参照系）を確認します。RevitGeoSuiteが
+   自動的に検出します（ここでは *JGD2011 / Japan Plane Zone 9*）。変更が必要な
+   場合のみドロップダウンを開きます。
+   ![座標参照系のドロップダウン（JGD2011 / Japan Plane Zone 9）がハイライトされたConfirm Existing Setup画面](/images/revitgeosuite/georef-existing-2.png)
+
+3. **Continue to Save** をクリックして、ジオリファレンスメタデータを保存します。
+   これ以降のインポート・エクスポートでこの座標が使用されます。
+   ![Continue to SaveボタンがハイライトされたConfirm Existing Setup画面](/images/revitgeosuite/georef-existing-3.png)
+</Steps>
+
+<Aside type="tip">
+  検出された座標参照系が間違っている場合は、保存する前にドロップダウンから正しい
+  ものを選択してください。すべてのインポート・エクスポートがこの値に依存します。
+</Aside>
+
+## 新規プロジェクト（座標系が未設定の場合）
+
+サーベイポイントとプロジェクト基準点のいずれにも座標設定が検出されなかった場合は、
+この手順を使います。RevitGeoSuiteは左側パネルに表示される6つのステップ
+（Review Current Setup、Select CRS、Select Area、Select Project Grids、
+Preview Changes、Apply）でウィザードを進めます。
+
+### Review Current Setup（現在の設定を確認）
+
+<Steps>
+1. RevitGeoSuiteが **No existing coordinate setup was detected**（既存の座標
+   設定が検出されませんでした）と表示し、不足しているメタデータを
+   **blocking**（ブロッキング）として警告します。インポート・エクスポートは
+   この設定に依存するためです。**Set up new coordinates** をクリックして
+   ウィザードを開始します。
+   ![座標設定が検出されず、ブロッキングのジオメタデータ不足の警告が表示されたRevitGeoSuiteのReview Current Setup画面](/images/revitgeosuite/georef-fresh-project-1.png)
+
+2. **Set up new coordinates** をクリックして開始します。
+   ![Set up new coordinatesボタンがハイライトされたReview Current Setup画面](/images/revitgeosuite/georef-fresh-project-2.jpg)
+</Steps>
+
+### Select CRS（座標参照系を選択）
+
+<Steps>
+1. ドロップダウンからサイトに合った **Coordinate Reference System**
+   （座標参照系）を選択します（ここでは *JGD2011 / Japan Plane Zone 9*）。
+   どの系がサイトを対象としているか分からない場合は、下記の
+   [座標系リファレンス](#座標系リファレンス)を参照してください。
+   ![座標参照系のドロップダウンがハイライトされたSelect CRS画面](/images/revitgeosuite/georef-fresh-project-3.png)
+
+2. **Confirm CRS** をクリックします。サーベイポイントはその座標系の原点
+   （投影座標 0, 0）に自動的に配置されます — 作図は不要です。
+   ![Confirm CRSボタンがハイライトされたSelect CRS画面](/images/revitgeosuite/georef-fresh-project-4.png)
+</Steps>
+
+### Select Area（エリアを選択）
+
+<Steps>
+1. やりやすい方法でプロジェクトのおおよその場所を選びます。地図上を直接
+   クリックする、座標が分かっている場合は手入力する、または地名で検索して
+   その場所まで地図をズームする、の3つの方法があります。
+   ![地図のクリック・座標の手入力・場所の検索のオプションが表示されたSelect Area画面](/images/revitgeosuite/georef-fresh-project-5.png)
+</Steps>
+
+### Select Project Grids（プロジェクトグリッドを選択）
+
+<Aside type="tip">
+  Project Gridsは、[PLATEAU](https://www.mlit.go.jp/plateau/)プロジェクトが
+  3D Tilesデータ向けに日本全国で使用している1kmメッシュのグリッドシステムです。
+  ここでグリッドを選ぶだけで、プロジェクト基準点を簡単・標準的な方法で配置
+  できます — 選んだグリッドの南西（左下）の角に設定されます。
+</Aside>
+
+<Steps>
+1. 選択したエリア付近にある1kmグリッドの候補を確認します。
+   ![選択したエリア付近の1kmグリッド候補が地図上に表示されたSelect Project Grids画面](/images/revitgeosuite/georef-fresh-project-6.png)
+
+2. 実際のRevitモデルに最も近いグリッドを選択します。選んだグリッドに合わせて
+   プロジェクト基準点（南西の角）が更新されます。
+   ![グリッドが選択され、結果のプロジェクト基準点（南西の角）の座標が表示されたSelect Project Grids画面](/images/revitgeosuite/georef-fresh-project-7.png)
+
+3. **Continue to Preview** をクリックします。
+   ![Continue to PreviewボタンがハイライトされたSelect Project Grids画面](/images/revitgeosuite/georef-fresh-project-8.png)
+</Steps>
+
+### Preview Changes と Apply（変更の確認と適用）
+
+<Steps>
+1. 座標参照系・サーベイポイント・プロジェクト基準点・選択したグリッドについて、
+   **Current**（現在）と **Proposed**（変更後）を比較した差分を確認します。
+   問題なければ **Apply Changes** をクリックします。
+   ![現在と変更後の座標値の差分が表示され、Apply ChangesボタンがハイライトされたPreview Changes画面](/images/revitgeosuite/georef-fresh-project-9.png)
+
+2. ダイアログで **Confirm Apply** をクリックして、ジオリファレンスをRevitに
+   反映します。もう一度確認したい場合は **Back to Preview** をクリックします。
+   ![適用される変更内容が一覧表示され、Confirm ApplyボタンがハイライトされたApply Georeference確認ダイアログ](/images/revitgeosuite/georef-fresh-project-10.png)
+</Steps>
+
+## 座標系リファレンス
+
+RevitGeoSuiteでは、JGD2011 平面直角座標系の全19系（*JGD2011 / Japan Plane
+Zone 1〜19* と表示）を選択できます。各系は日本の特定の地域を対象としています。
+サイトに合った系を選ぶ・確認する際の参考にしてください。
+
+| 系（Zone） | 対象エリア |
+| --- | --- |
+| 第1系（Zone 1） | 長崎県、鹿児島県（南西部の島嶼） |
+| 第2系（Zone 2） | 福岡県、佐賀県、熊本県、大分県、宮崎県、鹿児島県（本土） |
+| 第3系（Zone 3） | 山口県、島根県、広島県 |
+| 第4系（Zone 4） | 香川県、愛媛県、徳島県、高知県（四国） |
+| 第5系（Zone 5） | 兵庫県、鳥取県、岡山県 |
+| 第6系（Zone 6） | 京都府、大阪府、福井県、滋賀県、三重県、奈良県、和歌山県 |
+| 第7系（Zone 7） | 石川県、富山県、岐阜県、愛知県 |
+| 第8系（Zone 8） | 新潟県、長野県、山梨県、静岡県 |
+| 第9系（Zone 9） | 東京都（伊豆諸島を含む）、神奈川県、埼玉県、千葉県、群馬県、茨城県、栃木県、福島県 |
+| 第10系（Zone 10） | 青森県、秋田県、山形県、岩手県、宮城県 |
+| 第11系（Zone 11） | 北海道南西部（函館市・小樽市など） |
+| 第12系（Zone 12） | 北海道中央・北部（札幌市・旭川市・稚内市など） |
+| 第13系（Zone 13） | 北海道東部（釧路市・帯広市・北見市・根室市など） |
+| 第14系（Zone 14） | 東京都 小笠原諸島 |
+| 第15系（Zone 15） | 沖縄県（沖縄本島周辺、那覇市など） |
+| 第16系（Zone 16） | 沖縄県 先島諸島（宮古・石垣／八重山） |
+| 第17系（Zone 17） | 沖縄県 大東諸島 |
+| 第18系（Zone 18） | 東京都 沖ノ鳥島 |
+| 第19系（Zone 19） | 東京都 南鳥島 |

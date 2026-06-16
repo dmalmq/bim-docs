@@ -1,0 +1,155 @@
+---
+title: Georeferencing Setup
+description: Save the coordinate metadata RevitGeoSuite needs before importing or exporting geospatial data.
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+
+RevitGeoSuite needs to know your model's coordinate reference system before it
+can import or export geospatial data correctly. This guide shows how to review
+and save that georeferencing metadata.
+
+How you set it up depends on whether the model already has a coordinate system.
+This page covers both cases:
+
+- The model **already has** shared coordinates — RevitGeoSuite detects the
+  existing Survey Point and Project Base Point, and you confirm and save them.
+- The model is a **fresh project** with no coordinate system yet — you choose
+  a coordinate reference system, a location, and a reference grid to set up
+  the Survey Point and Project Base Point from scratch.
+
+## Model with an existing coordinate system
+
+Use this path when RevitGeoSuite reports that your model already has shared
+coordinates.
+
+<Steps>
+1. Open **RevitGeoSuite** and go to **Review Current Setup**. When the Survey
+   Point and Project Base Point both hold readable shared coordinates,
+   RevitGeoSuite shows **Existing coordinate setup detected**. Review the
+   detected values, then click **Confirm existing setup**.
+   ![RevitGeoSuite Review Current Setup screen showing an existing coordinate setup detected, with the Confirm existing setup button highlighted](/images/revitgeosuite/georef-existing-1.png)
+
+2. On the **Confirm Setup** step, check the detected coordinates and the
+   **Coordinate Reference System**. RevitGeoSuite auto-detects it (here,
+   *JGD2011 / Japan Plane Zone 9*) — open the dropdown only if you need to
+   change it.
+   ![Confirm Existing Setup screen with the Coordinate Reference System dropdown highlighted, set to JGD2011 / Japan Plane Zone 9](/images/revitgeosuite/georef-existing-2.png)
+
+3. Click **Continue to Save** to store the georeferencing metadata. Your imports
+   and exports will now use these coordinates.
+   ![Confirm Existing Setup screen with the Continue to Save button highlighted](/images/revitgeosuite/georef-existing-3.png)
+</Steps>
+
+<Aside type="tip">
+  If the detected Coordinate Reference System is wrong, pick the correct one
+  from the dropdown before saving — every import and export depends on this
+  value being right.
+</Aside>
+
+## Fresh project without a coordinate system
+
+Use this path when RevitGeoSuite reports that no coordinate setup was
+detected on the Survey Point or Project Base Point. RevitGeoSuite walks you
+through six steps — Review Current Setup, Select CRS, Select Area, Select
+Project Grids, Preview Changes, and Apply — shown in the left-hand panel.
+
+### Review Current Setup
+
+<Steps>
+1. RevitGeoSuite shows **No existing coordinate setup was detected** and flags
+   the missing metadata as **blocking**, since imports and exports depend on
+   it. Click **Set up new coordinates** to start the wizard.
+   ![RevitGeoSuite Review Current Setup screen reporting no existing coordinate setup detected, with a blocking missing geo metadata warning](/images/revitgeosuite/georef-fresh-project-1.png)
+
+2. Click **Set up new coordinates** to begin.
+   ![Review Current Setup screen with the Set up new coordinates button highlighted](/images/revitgeosuite/georef-fresh-project-2.jpg)
+</Steps>
+
+### Select CRS
+
+<Steps>
+1. Choose the **Coordinate Reference System** for your site from the dropdown
+   (here, *JGD2011 / Japan Plane Zone 9*). See the
+   [coordinate system reference](#coordinate-system-reference) below if you're
+   not sure which zone covers your site.
+   ![Select CRS screen with the Coordinate Reference System dropdown highlighted](/images/revitgeosuite/georef-fresh-project-3.png)
+
+2. Click **Confirm CRS**. The Survey Point is placed automatically at that
+   system's origin (projected 0, 0) — no drawing required.
+   ![Select CRS screen with the Confirm CRS button highlighted](/images/revitgeosuite/georef-fresh-project-4.png)
+</Steps>
+
+### Select Area
+
+<Steps>
+1. Choose the general location of your project using whichever is easiest:
+   click directly on the map, enter coordinates manually if you've been given
+   a set point, or search for a place name to zoom the map to that area.
+   ![Select Area screen showing options to click the map, enter coordinates, or search for a location](/images/revitgeosuite/georef-fresh-project-5.png)
+</Steps>
+
+### Select Project Grids
+
+<Aside type="tip">
+  Project Grids are the [PLATEAU project](https://www.mlit.go.jp/plateau/)'s
+  1 km mesh grid system, used across Japan for 3D Tiles data. Picking a grid
+  here gives you a quick, standardized way to place the Project Base Point —
+  it is set to the south-west (bottom-left) corner of the grid you choose.
+</Aside>
+
+<Steps>
+1. Browse the 1 km grid candidates near the area you selected.
+   ![Select Project Grids screen showing nearby 1 km grid candidates on the map](/images/revitgeosuite/georef-fresh-project-6.png)
+
+2. Select the grid closest to your actual Revit model. The Project Base Point
+   (south-west corner) updates to match the grid you chose.
+   ![Select Project Grids screen with a grid selected and the resulting Project Base Point (south-west corner) coordinates shown](/images/revitgeosuite/georef-fresh-project-7.png)
+
+3. Click **Continue to Preview**.
+   ![Select Project Grids screen with the Continue to Preview button highlighted](/images/revitgeosuite/georef-fresh-project-8.png)
+</Steps>
+
+### Preview Changes and Apply
+
+<Steps>
+1. Review the visual diff of what will change — Coordinate Reference System,
+   Survey Point, Project Base Point, and the selected grid — comparing
+   **Current** to **Proposed** values. Click **Apply Changes** once it looks
+   correct.
+   ![Preview Changes screen showing a visual diff of current versus proposed coordinate values, with the Apply Changes button highlighted](/images/revitgeosuite/georef-fresh-project-9.png)
+
+2. Confirm in the dialog by clicking **Confirm Apply** to commit the
+   georeference to Revit, or **Back to Preview** if you want to review it
+   again first.
+   ![Apply Georeference confirmation dialog listing the changes to be applied, with the Confirm Apply button highlighted](/images/revitgeosuite/georef-fresh-project-10.png)
+</Steps>
+
+## Coordinate system reference
+
+RevitGeoSuite lists all 19 zones of the JGD2011 Japan Plane Rectangular
+Coordinate System (shown as *JGD2011 / Japan Plane Zone 1–19*). Each zone
+covers a specific region of Japan — use this table to choose or check the
+right one for your site.
+
+| Zone | Area covered |
+| --- | --- |
+| Zone 1 | Nagasaki; south-western islands of Kagoshima |
+| Zone 2 | Fukuoka, Saga, Kumamoto, Oita, Miyazaki, Kagoshima (mainland) |
+| Zone 3 | Yamaguchi, Shimane, Hiroshima |
+| Zone 4 | Kagawa, Ehime, Tokushima, Kochi (Shikoku) |
+| Zone 5 | Hyogo, Tottori, Okayama |
+| Zone 6 | Kyoto, Osaka, Fukui, Shiga, Mie, Nara, Wakayama |
+| Zone 7 | Ishikawa, Toyama, Gifu, Aichi |
+| Zone 8 | Niigata, Nagano, Yamanashi, Shizuoka |
+| Zone 9 | Tokyo (incl. Izu Islands), Kanagawa, Saitama, Chiba, Gunma, Ibaraki, Tochigi, Fukushima |
+| Zone 10 | Aomori, Akita, Yamagata, Iwate, Miyagi |
+| Zone 11 | South-western Hokkaido (e.g. Hakodate, Otaru) |
+| Zone 12 | Central & northern Hokkaido (e.g. Sapporo, Asahikawa, Wakkanai) |
+| Zone 13 | Eastern Hokkaido (e.g. Kushiro, Obihiro, Kitami, Nemuro) |
+| Zone 14 | Tokyo — Ogasawara (Bonin) Islands |
+| Zone 15 | Okinawa — main island region (e.g. Naha) |
+| Zone 16 | Okinawa — Sakishima Islands (Miyako, Ishigaki / Yaeyama) |
+| Zone 17 | Okinawa — Daitō Islands |
+| Zone 18 | Tokyo — Okinotorishima |
+| Zone 19 | Tokyo — Minamitorishima |

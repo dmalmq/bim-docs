@@ -52,6 +52,17 @@ export default defineConfig({
           ],
         },
         {
+          label: "RevitGeoSuite",
+          translations: { ja: "RevitGeoSuite" },
+          items: [
+            {
+              label: "Georeferencing Setup",
+              translations: { ja: "ジオリファレンス設定" },
+              slug: "revitgeosuite/georeferencing-setup",
+            },
+          ],
+        },
+        {
           label: "Plugins",
           translations: { ja: "プラグイン" },
           items: [
