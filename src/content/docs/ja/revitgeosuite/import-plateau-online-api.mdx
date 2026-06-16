@@ -1,0 +1,55 @@
+---
+title: PLATEAUデータのインポート（オンライン / API）
+description: PLATEAU APIから直接、PLATEAUの3D都市データを検索してインポートする方法。
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+
+RevitGeoSuiteでは、PLATEAU APIから直接PLATEAUの3D都市データを検索・
+ダウンロードできます。ローカルフォルダからのインポートとは異なり、
+プロジェクトベースポイントの周辺にあるPLATEAUのグリッドを自動的に検出するため、
+エリアを手動で検索する必要はありません。
+
+### インポート元を選択する
+
+<Steps>
+1. RevitGeoSuiteで **Import**（**IMP** アイコン）を開き、
+   **PLATEAU Online / API** を選択します。
+   ![PLATEAU Online / APIが選択された、RevitGeoSuiteのChoose Import Source画面。Local PLATEAU FolderとLocal GIS filesも並んで表示されている](/images/revitgeosuite/plateau-online-import-1.png)
+</Steps>
+
+### グリッドを選択する
+
+<Steps>
+1. 地図にはすでにプロジェクト周辺のPLATEAU 1kmグリッドタイルが表示されており、
+   **Selected datasets** にはその周辺グリッドから検出された近隣の自治体が
+   一覧表示されています。エリアを検索する必要はありません。地図上で
+   必要なタイルをクリックすると、**Selected Grids** に追加されます。
+   ![地図がハイライトされたSelect Gridsパネル。プロジェクト周辺のPLATEAUグリッドタイルと、近隣自治体の自動検出されたデータセットが表示され、グリッドはまだ選択されていない状態](/images/revitgeosuite/plateau-online-import-2.png)
+</Steps>
+
+### インポート内容を選択する
+
+<Steps>
+1. **Import as** で **3D context (solids)**（3Dコンテキスト／ソリッド）、
+   **2D basemap (DXF)**（2Dベースマップ／DXF）、**Ground / terrain
+   (topography)**（地形）の中から、必要な形式を選択します。
+   ![3D context、2D basemap、Ground/terrainのオプションが表示され、2D basemap (DXF)が選択されたImport asセクションがハイライトされている画面](/images/revitgeosuite/plateau-online-import-3.png)
+</Steps>
+
+### ベースマップのレイヤーを設定する
+
+<Steps>
+1. **2D basemap (DXF)** をインポートする場合は、含める **Basemap
+   layers**（ベースマップレイヤー）を選択します — **Buildings**（建物）、
+   **Roads**（道路）、**Land use**（土地利用）。
+   ![Buildings、Roads、Land useのチェックボックスがすべてオンになったBasemap layersセクションがハイライトされている画面](/images/revitgeosuite/plateau-online-import-4.png)
+</Steps>
+
+### インポートする
+
+<Steps>
+1. インポートボタンをクリックして完了します。ボタンの表示名は選択した形式に
+   応じて変わります（例：**Import 2D Basemap**）。
+   ![Import 2D Basemapボタンがハイライトされたパネル](/images/revitgeosuite/plateau-online-import-5.png)
+</Steps>

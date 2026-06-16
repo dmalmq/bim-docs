@@ -70,6 +70,11 @@ export default defineConfig({
               translations: { ja: "ローカルGISファイルのインポート" },
               slug: "revitgeosuite/import-local-gis-files",
             },
+            {
+              label: "Import PLATEAU Data (Online / API)",
+              translations: { ja: "PLATEAUデータのインポート（オンライン / API）" },
+              slug: "revitgeosuite/import-plateau-online-api",
+            },
           ],
         },
         {

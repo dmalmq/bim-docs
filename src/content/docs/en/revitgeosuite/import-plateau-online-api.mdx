@@ -1,0 +1,54 @@
+---
+title: Import PLATEAU Data (Online / API)
+description: Browse and import PLATEAU 3D city data directly from the PLATEAU API.
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+
+RevitGeoSuite can browse and download PLATEAU 3D city data directly from the
+PLATEAU API. Unlike the local-folder import, it automatically detects the
+PLATEAU grids surrounding your project base point, so there's no need to
+manually search for an area.
+
+### Choose Import Source
+
+<Steps>
+1. Open **Import** (the **IMP** icon) in RevitGeoSuite, then select
+   **PLATEAU Online / API**.
+   ![RevitGeoSuite Choose Import Source screen with PLATEAU Online / API selected, alongside Local PLATEAU Folder and Local GIS files](/images/revitgeosuite/plateau-online-import-1.png)
+</Steps>
+
+### Select grids
+
+<Steps>
+1. The map already shows the PLATEAU 1 km grid tiles around your project,
+   and **Selected datasets** lists the nearby municipalities detected from
+   those surrounding grids — you don't need to search for an area. Click the
+   tile(s) you want on the map to add them under **Selected Grids**.
+   ![Select Grids panel with the map highlighted, showing surrounding PLATEAU grid tiles and auto-detected datasets for nearby municipalities, with no grids selected yet](/images/revitgeosuite/plateau-online-import-2.png)
+</Steps>
+
+### Choose what to import
+
+<Steps>
+1. Pick what to **Import as** — **3D context (solids)**, **2D basemap
+   (DXF)**, or **Ground / terrain (topography)** — depending on what you
+   need.
+   ![Import as section highlighted with 3D context, 2D basemap, and Ground/terrain options, 2D basemap (DXF) selected](/images/revitgeosuite/plateau-online-import-3.png)
+</Steps>
+
+### Configure basemap layers
+
+<Steps>
+1. If you're importing a **2D basemap (DXF)**, choose which **Basemap
+   layers** to include — **Buildings**, **Roads**, and **Land use**.
+   ![Basemap layers section highlighted with Buildings, Roads, and Land use checkboxes all checked](/images/revitgeosuite/plateau-online-import-4.png)
+</Steps>
+
+### Import
+
+<Steps>
+1. Click the import button to finish — its label matches the format you
+   chose, e.g. **Import 2D Basemap**.
+   ![Panel with the Import 2D Basemap button highlighted](/images/revitgeosuite/plateau-online-import-5.png)
+</Steps>
