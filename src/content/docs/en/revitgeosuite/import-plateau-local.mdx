@@ -1,0 +1,54 @@
+---
+title: Import PLATEAU Data (Local)
+description: Import PLATEAU 3D city data into Revit from a local folder or a direct geospatial.jp download.
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+
+RevitGeoSuite can bring PLATEAU 3D city data into your Revit model as context,
+a basemap, or terrain. This guide covers importing it from a **local
+PLATEAU folder** — either data you already have downloaded, or a fresh
+download from geospatial.jp — as opposed to the Online/API or GIS-file import
+sources.
+
+### Choose Import Source
+
+<Steps>
+1. Open **Import** (the **IMP** icon) in RevitGeoSuite, then select
+   **Local PLATEAU Folder**.
+   ![RevitGeoSuite Choose Import Source screen with Local PLATEAU Folder selected, alongside Local GIS files and PLATEAU Online / API](/images/revitgeosuite/import-plateau-local-1.png)
+</Steps>
+
+### Get the data
+
+<Steps>
+1. Click **Browse PLATEAU datasets** to search and download directly from
+   geospatial.jp.
+   ![Local Folder panel with the Browse PLATEAU datasets button highlighted](/images/revitgeosuite/import-plateau-local-2.png)
+
+2. Search for your municipality by name.
+   ![Municipality search box with "shinagawa" typed, showing a matching result for Tokyo, Shinagawa-ku](/images/revitgeosuite/import-plateau-local-4.png)
+
+3. Select the matching result, then review the **Year** and the available
+   dataset. The **CityGML** file is not selected yet.
+   ![Shinagawa-ku selected with Year set to 2025 and the CityGML checkbox unchecked, button reading Download 0 selected](/images/revitgeosuite/import-plateau-local-5.png)
+
+4. Check the **CityGML** checkbox and click **Download 1 selected**.
+   ![Same panel with the CityGML checkbox checked, button reading Download 1 selected](/images/revitgeosuite/import-plateau-local-3.png)
+</Steps>
+
+<Aside type="tip">
+  Already have PLATEAU data downloaded? Skip the search above and use
+  **Browse…** to pick the folder, then click **Scan Folder** instead.
+</Aside>
+
+### Import the data into Revit
+
+<Steps>
+1. Once the data is ready, pick the tiles you need on the map, choose what to
+   **Import as** — **3D context (solids)**, **3D basemap (DXF)**, or
+   **Ground / terrain (topography)** depending on what you need — then click
+   the import button. You can repeat this step to import more than one
+   format for the same tiles.
+   ![Select Tiles screen with a 1 km tile grid over the map and Import as options for 3D context, 3D basemap, and ground/terrain](/images/revitgeosuite/import-plateau-local-6.png)
+</Steps>

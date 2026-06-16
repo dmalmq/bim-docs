@@ -60,6 +60,16 @@ export default defineConfig({
               translations: { ja: "ジオリファレンス設定" },
               slug: "revitgeosuite/georeferencing-setup",
             },
+            {
+              label: "Import PLATEAU Data (Local)",
+              translations: { ja: "PLATEAUデータのインポート（ローカル）" },
+              slug: "revitgeosuite/import-plateau-local",
+            },
+            {
+              label: "Import Local GIS Files",
+              translations: { ja: "ローカルGISファイルのインポート" },
+              slug: "revitgeosuite/import-local-gis-files",
+            },
           ],
         },
         {

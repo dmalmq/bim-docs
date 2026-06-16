@@ -1,0 +1,64 @@
+---
+title: Import Local GIS Files
+description: Bring Shapefiles or GeoPackages into Revit as a basemap using RevitGeoSuite.
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+
+RevitGeoSuite can bring Shapefiles or GeoPackages into your Revit model as a
+basemap. It converts the GIS geometry to persistent DXF files and links them
+into Revit as CAD links.
+
+### Choose Import Source
+
+<Steps>
+1. Open **Import** (the **IMP** icon) in RevitGeoSuite, then select
+   **Local GIS files**.
+   ![RevitGeoSuite Choose Import Source screen with Local GIS files selected, alongside Local PLATEAU Folder and PLATEAU Online / API](/images/revitgeosuite/local-gis-1.png)
+</Steps>
+
+### Select your GIS files
+
+<Steps>
+1. Click **Browse…** next to **GIS files**.
+   ![Local GIS files panel with the Browse button next to GIS files highlighted](/images/revitgeosuite/local-gis-2.png)
+
+2. Select your `.shp` or `.gpkg` files in the file picker — you can select
+   more than one.
+   ![Windows file picker with multiple .shp files selected](/images/revitgeosuite/local-gis-3.png)
+
+3. Give the basemap a **Basemap name** and review the **Line colors** for
+   each category (Openings, Units, Levels, Details). RevitGeoSuite
+   auto-detects a level for each file. Click **Assign files…** to review or
+   adjust the category and level it picked.
+   ![Local GIS files panel with Basemap name set to Walkway, 9 files selected, all files showing a detected level, and the Assign files button highlighted](/images/revitgeosuite/local-gis-4.png)
+</Steps>
+
+### Assign categories and levels
+
+<Steps>
+1. In the **Assign files** dialog, confirm or correct the **Category**
+   (Openings, Levels, Details) and **Level** for each file. Select multiple
+   rows and use **Set category…** / **Set level…** to update them all at
+   once, then close the dialog.
+   ![Assign files dialog showing a table of files with Category and Level dropdowns per row](/images/revitgeosuite/local-gis-5.png)
+</Steps>
+
+### Link the basemap
+
+<Steps>
+1. Click **Browse…** next to **DXF output folder**.
+   ![Local GIS files panel with the Browse button next to DXF output folder highlighted](/images/revitgeosuite/local-gis-6.png)
+
+2. Choose the folder where the linked DXF files should be saved.
+   ![Windows folder picker for the DXF output folder](/images/revitgeosuite/local-gis-7.png)
+
+3. Click **Link GIS Basemap** to finish.
+   ![Local GIS files panel with the DXF output folder filled in and the Link GIS Basemap button enabled](/images/revitgeosuite/local-gis-8.png)
+</Steps>
+
+<Aside type="tip">
+  The DXF files are written to disk and linked into Revit as CAD links — if
+  you move the project, keep the DXF output folder alongside it so the links
+  don't break.
+</Aside>

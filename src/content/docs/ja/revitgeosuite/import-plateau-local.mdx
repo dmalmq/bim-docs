@@ -1,0 +1,56 @@
+---
+title: PLATEAUデータのインポート（ローカル）
+description: ローカルフォルダまたはgeospatial.jpからの直接ダウンロードで、PLATEAUの3D都市データをRevitにインポートする方法。
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+
+RevitGeoSuiteでは、PLATEAUの3D都市データをコンテキスト・ベースマップ・地形として
+Revitモデルに取り込めます。このガイドでは、**ローカルのPLATEAUフォルダ**
+（すでにダウンロード済みのデータ、またはgeospatial.jpからの新規ダウンロード）
+からインポートする方法を説明します。Online / APIやGISファイルからのインポートは
+対象外です。
+
+### インポート元を選択する
+
+<Steps>
+1. RevitGeoSuiteで **Import**（**IMP** アイコン）を開き、
+   **Local PLATEAU Folder** を選択します。
+   ![Local PLATEAU Folderが選択された、RevitGeoSuiteのChoose Import Source画面。Local GIS filesとPLATEAU Online / APIも並んで表示されている](/images/revitgeosuite/import-plateau-local-1.png)
+</Steps>
+
+### データを取得する
+
+<Steps>
+1. **Browse PLATEAU datasets** をクリックして、geospatial.jpから直接検索・
+   ダウンロードします。
+   ![Browse PLATEAU datasetsボタンがハイライトされたLocal Folderパネル](/images/revitgeosuite/import-plateau-local-2.png)
+
+2. 自治体名で検索します。
+   ![「shinagawa」と入力された自治体検索ボックス。東京都品川区が一致結果として表示されている](/images/revitgeosuite/import-plateau-local-4.png)
+
+3. 一致した結果を選択し、**Year**（年度）と利用可能なデータセットを確認します。
+   この時点では **CityGML** はまだ選択されていません。
+   ![品川区が選択され、Yearが2025、CityGMLのチェックボックスが未チェックの状態。ボタンにDownload 0 selectedと表示されている](/images/revitgeosuite/import-plateau-local-5.png)
+
+4. **CityGML** のチェックボックスをオンにし、**Download 1 selected** を
+   クリックします。
+   ![同じパネルでCityGMLのチェックボックスがオンになり、ボタンにDownload 1 selectedと表示されている](/images/revitgeosuite/import-plateau-local-3.png)
+</Steps>
+
+<Aside type="tip">
+  すでにPLATEAUデータをダウンロード済みの場合は、上記の検索をスキップして
+  **Browse…** でフォルダを選び、**Scan Folder** をクリックしてください。
+</Aside>
+
+### Revitにデータをインポートする
+
+<Steps>
+1. データが準備できたら、地図上で必要なタイルを選び、**Import as**
+   （インポート形式）で **3D context (solids)**（3Dコンテキスト／ソリッド）、
+   **3D basemap (DXF)**（3Dベースマップ／DXF）、**Ground / terrain
+   (topography)**（地形）の中から必要なものを選択し、インポートボタンを
+   クリックします。同じタイルに対して複数の形式をインポートしたい場合は、
+   この手順を繰り返してください。
+   ![地図上に1kmのタイルグリッドが表示されたSelect Tiles画面。3D context、3D basemap、ground/terrainのImport asオプションが表示されている](/images/revitgeosuite/import-plateau-local-6.png)
+</Steps>

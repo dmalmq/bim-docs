@@ -1,0 +1,64 @@
+---
+title: ローカルGISファイルのインポート
+description: ShapefileやGeoPackageをRevitGeoSuiteでベースマップとしてRevitに取り込む方法。
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+
+RevitGeoSuiteでは、ShapefileやGeoPackageをベースマップとしてRevitモデルに
+取り込めます。GISのジオメトリは永続的なDXFファイルに変換され、CADリンクとして
+Revitにリンクされます。
+
+### インポート元を選択する
+
+<Steps>
+1. RevitGeoSuiteで **Import**（**IMP** アイコン）を開き、
+   **Local GIS files** を選択します。
+   ![Local GIS filesが選択された、RevitGeoSuiteのChoose Import Source画面。Local PLATEAU FolderとPLATEAU Online / APIも並んで表示されている](/images/revitgeosuite/local-gis-1.png)
+</Steps>
+
+### GISファイルを選択する
+
+<Steps>
+1. **GIS files** の横にある **Browse…** をクリックします。
+   ![GIS filesの横のBrowseボタンがハイライトされたLocal GIS filesパネル](/images/revitgeosuite/local-gis-2.png)
+
+2. ファイルピッカーで `.shp` または `.gpkg` ファイルを選択します。
+   複数選択も可能です。
+   ![複数の.shpファイルが選択されたWindowsのファイルピッカー](/images/revitgeosuite/local-gis-3.png)
+
+3. **Basemap name**（ベースマップ名）を入力し、各カテゴリ（Openings、
+   Units、Levels、Details）の **Line colors**（線の色）を確認します。
+   RevitGeoSuiteは各ファイルのレベルを自動検出します。**Assign files…**
+   をクリックして、検出されたカテゴリとレベルを確認・調整します。
+   ![Basemap nameがWalkwayに設定され、9個のファイルが選択され、すべてのファイルにレベルが検出されている状態で、Assign filesボタンがハイライトされたLocal GIS filesパネル](/images/revitgeosuite/local-gis-4.png)
+</Steps>
+
+### カテゴリとレベルを割り当てる
+
+<Steps>
+1. **Assign files** ダイアログで、各ファイルの **Category**（Openings、
+   Levels、Details）と **Level** を確認・修正します。複数の行を選択して
+   **Set category…** / **Set level…** を使うと、まとめて変更できます。
+   確認できたらダイアログを閉じます。
+   ![ファイルごとにCategoryとLevelのドロップダウンが並んだテーブルを表示するAssign filesダイアログ](/images/revitgeosuite/local-gis-5.png)
+</Steps>
+
+### ベースマップをリンクする
+
+<Steps>
+1. **DXF output folder** の横にある **Browse…** をクリックします。
+   ![DXF output folderの横のBrowseボタンがハイライトされたLocal GIS filesパネル](/images/revitgeosuite/local-gis-6.png)
+
+2. リンクするDXFファイルを保存するフォルダを選択します。
+   ![DXF出力フォルダを選択するWindowsのフォルダピッカー](/images/revitgeosuite/local-gis-7.png)
+
+3. **Link GIS Basemap** をクリックして完了します。
+   ![DXF output folderが入力され、Link GIS Basemapボタンが有効になったLocal GIS filesパネル](/images/revitgeosuite/local-gis-8.png)
+</Steps>
+
+<Aside type="tip">
+  DXFファイルはディスクに書き出され、CADリンクとしてRevitにリンクされます。
+  プロジェクトを移動する際は、リンクが切れないようDXF output folderも
+  一緒に移動してください。
+</Aside>
