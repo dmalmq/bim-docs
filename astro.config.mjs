@@ -61,29 +61,41 @@ export default defineConfig({
               slug: "revitgeosuite/georeferencing-setup",
             },
             {
-              label: "Import PLATEAU Data (Local)",
-              translations: { ja: "PLATEAUデータのインポート（ローカル）" },
-              slug: "revitgeosuite/import-plateau-local",
+              label: "Import",
+              translations: { ja: "インポート" },
+              items: [
+                {
+                  label: "Import PLATEAU Data (Local)",
+                  translations: { ja: "PLATEAUデータのインポート（ローカル）" },
+                  slug: "revitgeosuite/import-plateau-local",
+                },
+                {
+                  label: "Import Local GIS Files",
+                  translations: { ja: "ローカルGISファイルのインポート" },
+                  slug: "revitgeosuite/import-local-gis-files",
+                },
+                {
+                  label: "Import PLATEAU Data (Online / API)",
+                  translations: { ja: "PLATEAUデータのインポート（オンライン / API）" },
+                  slug: "revitgeosuite/import-plateau-online-api",
+                },
+              ],
             },
             {
-              label: "Import Local GIS Files",
-              translations: { ja: "ローカルGISファイルのインポート" },
-              slug: "revitgeosuite/import-local-gis-files",
-            },
-            {
-              label: "Import PLATEAU Data (Online / API)",
-              translations: { ja: "PLATEAUデータのインポート（オンライン / API）" },
-              slug: "revitgeosuite/import-plateau-online-api",
-            },
-            {
-              label: "Export PLATEAU Context",
-              translations: { ja: "PLATEAUコンテキストのエクスポート" },
-              slug: "revitgeosuite/export-plateau-context",
-            },
-            {
-              label: "Export 3D Tiles",
-              translations: { ja: "3D Tilesのエクスポート" },
-              slug: "revitgeosuite/export-3dtiles",
+              label: "Export",
+              translations: { ja: "エクスポート" },
+              items: [
+                {
+                  label: "Export PLATEAU Context",
+                  translations: { ja: "PLATEAUコンテキストのエクスポート" },
+                  slug: "revitgeosuite/export-plateau-context",
+                },
+                {
+                  label: "Export 3D Tiles",
+                  translations: { ja: "3D Tilesのエクスポート" },
+                  slug: "revitgeosuite/export-3dtiles",
+                },
+              ],
             },
           ],
         },
