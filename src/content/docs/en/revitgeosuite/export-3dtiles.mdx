@@ -1,0 +1,63 @@
+---
+title: Export 3D Tiles
+description: Export your Revit model as Cesium 3D Tiles for web-based GIS visualization.
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+
+RevitGeoSuite can export your georeferenced Revit model as Cesium 3D Tiles,
+ready for display in web-based GIS viewers and PLATEAU platforms.
+
+### Choose Export Format
+
+<Steps>
+1. Open **Export** (the **EXP** icon) in RevitGeoSuite, then select
+   **3D Tiles**.
+   ![RevitGeoSuite Choose Export Format screen with 3D Tiles selected, alongside PLATEAU Context, CityGML, and GeoPackage / Shapefile](/images/revitgeosuite/export-3dtiles-1.png)
+</Steps>
+
+### Select scope
+
+<Steps>
+1. Choose what to include in the export:
+   - **Whole Model** — all elements in the model
+   - **Active 3D View** — only elements visible in the current 3D view
+   - **Selection** — only the elements you have selected in Revit
+
+   Then click **Continue**.
+   ![Select Scope panel showing Whole Model, Active 3D View, and Selection options with a Continue button](/images/revitgeosuite/export-3dtiles-2.png)
+</Steps>
+
+### Set output folder
+
+<Steps>
+1. In **3D Tiles Options**, click **Browse…** next to **Output Folder**.
+   ![3D Tiles Options panel with the Browse button next to Output Folder highlighted and settings at their defaults](/images/revitgeosuite/export-3dtiles-3.png)
+
+2. Navigate to the destination folder and click **Select Folder**.
+   ![Windows folder picker for selecting the 3D Tiles output folder](/images/revitgeosuite/export-3dtiles-4.png)
+</Steps>
+
+### Configure options
+
+<Steps>
+1. Adjust **LOD Level** (default: LOD 2 Standard) and **Geometry Mode**
+   (default: Lightweight Extrusion) as needed. If your tiles need to be
+   vertically accurate for PLATEAU or other Japan-standard workflows, check
+   **Use precise CRS projection** and set the **Geoid Height Offset** in
+   metres — for Tokyo this is typically `36`.
+   ![3D Tiles Options panel with Use precise CRS projection checked and Geoid Height Offset set to 36, highlighted](/images/revitgeosuite/export-3dtiles-5.png)
+</Steps>
+
+<Aside type="tip">
+  The geoid height offset compensates for the difference between ellipsoidal
+  height (used by GPS) and the geoid height used in PLATEAU and Japan's
+  survey standards. For most of the Tokyo area the value is approximately 36 m.
+</Aside>
+
+### Export
+
+<Steps>
+1. With the **Output Folder** set and options configured, click **Export**.
+   ![3D Tiles Options panel with all options set and the Export button highlighted](/images/revitgeosuite/export-3dtiles-6.png)
+</Steps>

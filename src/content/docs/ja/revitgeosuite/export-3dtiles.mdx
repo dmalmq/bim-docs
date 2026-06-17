@@ -1,0 +1,65 @@
+---
+title: 3D Tilesのエクスポート
+description: RevitモデルをCesium 3D TilesとしてエクスポートしてWebベースのGISビューアで表示する方法。
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+
+RevitGeoSuiteでは、ジオリファレンスされたRevitモデルをCesium 3D Tilesとして
+書き出し、WebベースのGISビューアやPLATEAUプラットフォームで表示できます。
+
+### エクスポート形式を選択する
+
+<Steps>
+1. RevitGeoSuiteで **Export**（**EXP** アイコン）を開き、
+   **3D Tiles** を選択します。
+   ![3D Tilesが選択されたRevitGeoSuiteのChoose Export Format画面。PLATEAU Context、CityGML、GeoPackage / Shapefileも並んで表示されている](/images/revitgeosuite/export-3dtiles-1.png)
+</Steps>
+
+### エクスポート範囲を選択する
+
+<Steps>
+1. エクスポートに含める範囲を選択します：
+   - **Whole Model** — モデル内のすべての要素
+   - **Active 3D View** — 現在の3Dビューで表示されている要素のみ
+   - **Selection** — Revitで選択している要素のみ
+
+   選択したら **Continue** をクリックします。
+   ![Whole Model、Active 3D View、Selectionの3つのオプションとContinueボタンが表示されたSelect Scopeパネル](/images/revitgeosuite/export-3dtiles-2.png)
+</Steps>
+
+### 出力フォルダを設定する
+
+<Steps>
+1. **3D Tiles Options** で、**Output Folder** の横にある **Browse…** を
+   クリックします。
+   ![Output Folderの横のBrowseボタンがハイライトされ、各設定がデフォルト値になっている3D Tiles Optionsパネル](/images/revitgeosuite/export-3dtiles-3.png)
+
+2. 書き出し先のフォルダに移動し、**Select Folder** をクリックします。
+   ![3D Tiles出力フォルダを選択するWindowsのフォルダピッカー](/images/revitgeosuite/export-3dtiles-4.png)
+</Steps>
+
+### オプションを設定する
+
+<Steps>
+1. 必要に応じて **LOD Level**（デフォルト：LOD 2 Standard）と **Geometry
+   Mode**（デフォルト：Lightweight Extrusion）を調整します。PLATEAUや
+   日本の測量標準に合わせた垂直精度が必要な場合は、**Use precise CRS
+   projection** をオンにして **Geoid Height Offset**（単位：メートル）を
+   入力します。東京エリアでは通常 `36` を使用します。
+   ![Use precise CRS projectionがオンになり、Geoid Height Offsetが36に設定された3D Tiles Optionsパネル（該当箇所がハイライト）](/images/revitgeosuite/export-3dtiles-5.png)
+</Steps>
+
+<Aside type="tip">
+  Geoid Height Offsetは、GPSで使用される楕円体高と、PLATEAUや日本の測量
+  標準で使用されるジオイド高との差を補正するための値です。東京エリアでは
+  概ね36mです。
+</Aside>
+
+### エクスポートする
+
+<Steps>
+1. **Output Folder** が設定され、オプションの確認ができたら **Export** を
+   クリックします。
+   ![すべてのオプションが設定され、Exportボタンがハイライトされた3D Tiles Optionsパネル](/images/revitgeosuite/export-3dtiles-6.png)
+</Steps>

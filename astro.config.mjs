@@ -80,6 +80,11 @@ export default defineConfig({
               translations: { ja: "PLATEAUコンテキストのエクスポート" },
               slug: "revitgeosuite/export-plateau-context",
             },
+            {
+              label: "Export 3D Tiles",
+              translations: { ja: "3D Tilesのエクスポート" },
+              slug: "revitgeosuite/export-3dtiles",
+            },
           ],
         },
         {
