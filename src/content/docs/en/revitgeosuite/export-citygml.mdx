@@ -1,0 +1,47 @@
+---
+title: Export CityGML
+description: Export your Revit model as CityGML for semantic 3D city model workflows.
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+RevitGeoSuite can export your georeferenced Revit model as CityGML, a semantic
+3D city model format used in urban planning, simulation, and PLATEAU workflows.
+
+### Choose Export Format
+
+<Steps>
+1. Open **Export** (the **EXP** icon) in RevitGeoSuite, then select
+   **CityGML**.
+   ![RevitGeoSuite Choose Export Format screen with CityGML selected, alongside PLATEAU Context, 3D Tiles, and GeoPackage / Shapefile](/images/revitgeosuite/export-citygml-1.png)
+</Steps>
+
+### Select scope
+
+<Steps>
+1. Choose what to include in the export:
+   - **Whole Model** — all elements in the model
+   - **Active 3D View** — only elements visible in the current 3D view
+   - **Selection** — only the elements you have selected in Revit
+
+   Then click **Continue**.
+   ![Select Scope panel showing Whole Model, Active 3D View, and Selection options with a Continue button](/images/revitgeosuite/export-citygml-2.png)
+</Steps>
+
+### Set output folder
+
+<Steps>
+1. In **CityGML Options**, click **Browse…** next to **Output Folder**.
+   ![CityGML Options panel with the Browse button next to Output Folder highlighted and Schema Version set to CityGML 2.0](/images/revitgeosuite/export-citygml-3.png)
+
+2. Navigate to the destination folder and click **Select Folder**.
+   ![Windows folder picker for selecting the CityGML output folder](/images/revitgeosuite/export-citygml-4.png)
+</Steps>
+
+### Export
+
+<Steps>
+1. With the **Output Folder** set, confirm the **Schema Version** (default:
+   CityGML 2.0), then click **Export**.
+   ![CityGML Options panel with the Output Folder filled in and the Export button highlighted](/images/revitgeosuite/export-citygml-5.png)
+</Steps>

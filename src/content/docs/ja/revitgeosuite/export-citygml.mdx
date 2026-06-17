@@ -1,0 +1,48 @@
+---
+title: CityGMLのエクスポート
+description: RevitモデルをCityGMLとしてエクスポートし、セマンティック3D都市モデルのワークフローで活用する方法。
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+RevitGeoSuiteでは、ジオリファレンスされたRevitモデルをCityGMLとして書き出し、
+都市計画・シミュレーション・PLATEAUワークフローで活用できます。
+
+### エクスポート形式を選択する
+
+<Steps>
+1. RevitGeoSuiteで **Export**（**EXP** アイコン）を開き、
+   **CityGML** を選択します。
+   ![CityGMLが選択されたRevitGeoSuiteのChoose Export Format画面。PLATEAU Context、3D Tiles、GeoPackage / Shapefileも並んで表示されている](/images/revitgeosuite/export-citygml-1.png)
+</Steps>
+
+### エクスポート範囲を選択する
+
+<Steps>
+1. エクスポートに含める範囲を選択します：
+   - **Whole Model** — モデル内のすべての要素
+   - **Active 3D View** — 現在の3Dビューで表示されている要素のみ
+   - **Selection** — Revitで選択している要素のみ
+
+   選択したら **Continue** をクリックします。
+   ![Whole Model、Active 3D View、Selectionの3つのオプションとContinueボタンが表示されたSelect Scopeパネル](/images/revitgeosuite/export-citygml-2.png)
+</Steps>
+
+### 出力フォルダを設定する
+
+<Steps>
+1. **CityGML Options** で、**Output Folder** の横にある **Browse…** を
+   クリックします。
+   ![Output Folderの横のBrowseボタンがハイライトされ、Schema VersionがCityGML 2.0に設定されたCityGML Optionsパネル](/images/revitgeosuite/export-citygml-3.png)
+
+2. 書き出し先のフォルダに移動し、**Select Folder** をクリックします。
+   ![CityGML出力フォルダを選択するWindowsのフォルダピッカー](/images/revitgeosuite/export-citygml-4.png)
+</Steps>
+
+### エクスポートする
+
+<Steps>
+1. **Output Folder** が設定されたことを確認し、**Schema Version**
+   （デフォルト：CityGML 2.0）を確認したら **Export** をクリックします。
+   ![Output Folderが入力され、Exportボタンがハイライトされたに CityGML Optionsパネル](/images/revitgeosuite/export-citygml-5.png)
+</Steps>

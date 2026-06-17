@@ -95,6 +95,11 @@ export default defineConfig({
                   translations: { ja: "3D Tilesのエクスポート" },
                   slug: "revitgeosuite/export-3dtiles",
                 },
+                {
+                  label: "Export CityGML",
+                  translations: { ja: "CityGMLのエクスポート" },
+                  slug: "revitgeosuite/export-citygml",
+                },
               ],
             },
           ],
