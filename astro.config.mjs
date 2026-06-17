@@ -75,6 +75,11 @@ export default defineConfig({
               translations: { ja: "PLATEAUデータのインポート（オンライン / API）" },
               slug: "revitgeosuite/import-plateau-online-api",
             },
+            {
+              label: "Export PLATEAU Context",
+              translations: { ja: "PLATEAUコンテキストのエクスポート" },
+              slug: "revitgeosuite/export-plateau-context",
+            },
           ],
         },
         {

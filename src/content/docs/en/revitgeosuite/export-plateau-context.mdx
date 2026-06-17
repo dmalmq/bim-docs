@@ -1,0 +1,71 @@
+---
+title: Export PLATEAU Context
+description: Export georeferenced PLATEAU tiles with optional GSI/Kiban layers as Shapefile or DXF for downstream PLATEAU workflows.
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+
+RevitGeoSuite can export PLATEAU 3D city data tiles paired with optional
+GSI/Kiban map layers (sidewalks, railways, water, land use) as Shapefile
+and/or DXF — ready for use in downstream PLATEAU workflows.
+
+<Aside type="tip">
+  If you plan to include **GSI/Kiban layers**, download the Kiban data from
+  the [GSI Kiban service](https://service.gsi.go.jp/kiban/app/map/?search=base)
+  first and note the folder where you saved it.
+</Aside>
+
+### Choose Export Format
+
+<Steps>
+1. Open **Export** (the **EXP** icon) in RevitGeoSuite, then select
+   **PLATEAU Context**.
+   ![RevitGeoSuite Choose Export Format screen with PLATEAU Context selected, alongside 3D Tiles, CityGML, and GeoPackage / Shapefile](/images/revitgeosuite/export-plateau-context-1.png)
+</Steps>
+
+### Select your PLATEAU source
+
+<Steps>
+1. Click **Browse…** next to **PLATEAU Folder**.
+   ![PLATEAU Source panel with the Browse button highlighted and the PLATEAU Folder field empty](/images/revitgeosuite/export-plateau-context-2.png)
+
+2. Navigate to your PLATEAU dataset folder and click **Select Folder**.
+   ![Windows folder picker titled PLATEAU Folder, showing the contents of a local PLATEAU dataset folder](/images/revitgeosuite/export-plateau-context-3.png)
+
+3. Once the folder path appears, click **Scan Folder**.
+   ![PLATEAU Source panel with the folder path filled in and the Scan Folder button highlighted](/images/revitgeosuite/export-plateau-context-4.png)
+</Steps>
+
+### Select tiles
+
+<Steps>
+1. After scanning, the map switches to the GSI Kiban basemap. Click the 1 km
+   tiles you need — the panel shows how many are selected and their total
+   size — then click **Continue**.
+   ![Select Tiles panel showing the GSI Kiban basemap with several 1km tiles selected and the Continue button highlighted](/images/revitgeosuite/export-plateau-context-5.png)
+</Steps>
+
+### Set export options
+
+<Steps>
+1. In **PLATEAU Context Options**, click **Browse…** next to **Output
+   Folder** and pick where the exported files should be saved. Then choose
+   which **Formats** to export (**Shapefile**, **DXF**) and whether to
+   **Include PLATEAU context** and/or **Include GSI/Kiban layers**. If
+   including Kiban layers, click **Browse…** next to **Kiban Folder** as
+   well.
+   ![PLATEAU Context Options panel showing Output Folder (empty), Formats checkboxes, and Kiban Folder (empty) before any folders are set](/images/revitgeosuite/export-plateau-context-6.png)
+
+2. Navigate to the folder containing your downloaded Kiban data and click
+   **Select Folder**.
+   ![Windows folder picker titled Kiban Folder for selecting the GSI Kiban data folder](/images/revitgeosuite/export-plateau-context-7.png)
+</Steps>
+
+### Export
+
+<Steps>
+1. Confirm the **Output Folder** and **Kiban Folder** are set. Review the
+   **Kiban Layers** (Sidewalks, Railways, Water, Land use) and check or
+   uncheck any you don't need, then click **Export**.
+   ![PLATEAU Context Options panel with Output Folder and Kiban Folder filled in and the Export button active](/images/revitgeosuite/export-plateau-context-8.png)
+</Steps>

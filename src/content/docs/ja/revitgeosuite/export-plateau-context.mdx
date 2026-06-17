@@ -1,0 +1,70 @@
+---
+title: PLATEAUコンテキストのエクスポート
+description: 選択したPLATEAUタイルをGSI基盤地図レイヤーとともにShapefile/DXFとして書き出す方法。
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+
+RevitGeoSuiteでは、PLATEAUの3D都市データタイルをGSI/基盤地図レイヤー
+（歩道・鉄道・水域・土地利用）と合わせてShapefileおよびDXFとして書き出し、
+PLATEAUの後続ワークフローで活用できます。
+
+<Aside type="tip">
+  **GSI/基盤地図レイヤー**を含める場合は、あらかじめ
+  [GSI 基盤地図サービス](https://service.gsi.go.jp/kiban/app/map/?search=base)
+  から基盤地図データをダウンロードし、保存先フォルダを控えておいてください。
+</Aside>
+
+### エクスポート形式を選択する
+
+<Steps>
+1. RevitGeoSuiteで **Export**（**EXP** アイコン）を開き、
+   **PLATEAU Context** を選択します。
+   ![PLATEAU Contextが選択されたRevitGeoSuiteのChoose Export Format画面。3D Tiles、CityGML、GeoPackage / Shapefileも並んで表示されている](/images/revitgeosuite/export-plateau-context-1.png)
+</Steps>
+
+### PLATEAUソースを選択する
+
+<Steps>
+1. **PLATEAU Folder** の横にある **Browse…** をクリックします。
+   ![PLATEAU Folderフィールドが空の状態でBrowseボタンがハイライトされたPLATEAU Sourceパネル](/images/revitgeosuite/export-plateau-context-2.png)
+
+2. PLATEAUデータセットフォルダに移動し、**Select Folder** をクリックします。
+   ![ローカルのPLATEAUデータセットフォルダの内容が表示されたWindowsのフォルダピッカー（タイトル：PLATEAU Folder）](/images/revitgeosuite/export-plateau-context-3.png)
+
+3. フォルダパスが表示されたら、**Scan Folder** をクリックします。
+   ![フォルダパスが入力された状態でScan Folderボタンがハイライトされたパネル](/images/revitgeosuite/export-plateau-context-4.png)
+</Steps>
+
+### タイルを選択する
+
+<Steps>
+1. スキャン後、地図がGSI基盤地図に切り替わります。必要な1kmタイルをクリックして
+   選択し（パネルに選択数と合計サイズが表示されます）、**Continue** を
+   クリックします。
+   ![選択した1kmタイルとContinueボタンがハイライトされたGSI基盤地図が表示されたSelect Tilesパネル](/images/revitgeosuite/export-plateau-context-5.png)
+</Steps>
+
+### エクスポートオプションを設定する
+
+<Steps>
+1. **PLATEAU Context Options** で、**Output Folder** の横にある **Browse…**
+   をクリックして出力先フォルダを指定します。次に **Formats**（**Shapefile**、
+   **DXF**）と **Include PLATEAU context** / **Include GSI/Kiban layers** の
+   チェックボックスを確認します。Kibanレイヤーを含める場合は、**Kiban Folder**
+   の横の **Browse…** もクリックしてください。
+   ![Output FolderとKiban Folderがまだ設定されていない状態のPLATEAU Context Optionsパネル](/images/revitgeosuite/export-plateau-context-6.png)
+
+2. ダウンロード済みの基盤地図データフォルダに移動し、**Select Folder** を
+   クリックします。
+   ![GSI基盤地図データフォルダを選択するWindowsのフォルダピッカー（タイトル：Kiban Folder）](/images/revitgeosuite/export-plateau-context-7.png)
+</Steps>
+
+### エクスポートする
+
+<Steps>
+1. **Output Folder** と **Kiban Folder** が設定されていることを確認します。
+   **Kiban Layers**（Sidewalks、Railways、Water、Land use）を必要に応じて
+   調整し、**Export** をクリックします。
+   ![Output FolderとKiban Folderが入力され、Exportボタンが有効になったPLATEAU Context Optionsパネル](/images/revitgeosuite/export-plateau-context-8.png)
+</Steps>
