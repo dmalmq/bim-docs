@@ -92,8 +92,8 @@ for use in GIS tools such as QGIS.
 2. The **Category assignments** dialog lists all Revit Floor Types detected in
    the selected views. For each floor type, choose the matching IMDF category
    from the dropdown (for example: `walkway`, `restroom.female`,
-   `restroom.male`). Leave **unspecified** for types that do not map to an
-   IMDF category. Click **Close** when done.
+   `restroom.male`). Use **room** for generic spaces that do not map to a
+   more specific IMDF category. Click **Close** when done.
    ![Category assignments dialog showing a table of Revit Floor Types with IMDF category dropdowns](/images/revitgeosuite/export-geopackage-and-shapefiles-10.png)
 
 3. After closing the dialog the unassigned count in the status bar drops to 0.
@@ -104,8 +104,8 @@ for use in GIS tools such as QGIS.
 <Aside type="tip">
   Category assignments map Revit Floor Types to IMDF unit categories so
   downstream tools can correctly classify spaces (e.g. walkways, restrooms).
-  Leaving a type as **unspecified** is valid — it simply means that space will
-  have no IMDF category in the output.
+  For generic spaces that don't fit a more specific category, use **room**
+  rather than leaving the type as **unspecified**.
 </Aside>
 
 ### Export and review results

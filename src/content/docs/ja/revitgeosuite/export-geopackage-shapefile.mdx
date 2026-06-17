@@ -94,8 +94,8 @@ GISツールで活用できます。IMDFに準拠したフィーチャーレイ�
 2. **Category assignments** ダイアログには、選択したビューで検出された
    すべてのRevit Floor Typeが一覧表示されます。各フロアタイプに対して
    ドロップダウンから対応するIMDFカテゴリを選択します（例：`walkway`、
-   `restroom.female`、`restroom.male`）。IMDFカテゴリに対応しないタイプは
-   **unspecified** のままにします。完了したら **Close** をクリックします。
+   `restroom.female`、`restroom.male`）。より具体的なカテゴリに対応しない
+   汎用スペースには **room** を使用します。完了したら **Close** をクリックします。
    ![Revit Floor TypeとIMDFカテゴリのドロップダウンが並んだテーブルが表示されたCategory assignmentsダイアログ](/images/revitgeosuite/export-geopackage-and-shapefiles-10.png)
 
 3. ダイアログを閉じると、ステータスバーの未割り当て件数が0になります。
@@ -106,8 +106,9 @@ GISツールで活用できます。IMDFに準拠したフィーチャーレイ�
 <Aside type="tip">
   カテゴリの割り当ては、RevitのFloor TypeをIMDFのユニットカテゴリに
   マッピングすることで、後続ツールがスペースを正しく分類できるようにする
-  ためのものです（例：walkway、restroom）。**unspecified** のままにすること
-  も有効で、その場合は出力でそのスペースにIMDFカテゴリが付与されません。
+  ためのものです（例：walkway、restroom）。より具体的なカテゴリに当てはまらない
+  汎用スペースには、**unspecified** のままにするより **room** を使用することを
+  推奨します。
 </Aside>
 
 ### エクスポートして結果を確認する
