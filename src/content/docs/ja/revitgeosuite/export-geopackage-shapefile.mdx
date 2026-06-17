@@ -1,0 +1,123 @@
+---
+title: GeoPackage / Shapefileのエクスポート
+description: RevitのプランビューからジオリファレンスされたGISパッケージをGeoPackageまたはShapefileとして書き出す方法。
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+
+RevitGeoSuiteでは、Revitのプランビューからフロアプラン形状を
+GeoPackage（.gpkg）またはShapefile（.shp）として書き出し、QGISなどの
+GISツールで活用できます。IMDFに準拠したフィーチャーレイヤーを含みます。
+
+### エクスポート形式を選択する
+
+<Steps>
+1. RevitGeoSuiteで **Export**（**EXP** アイコン）を開き、
+   **GeoPackage / Shapefile** を選択します。
+   ![GeoPackage / Shapefileが選択されたRevitGeoSuiteのChoose Export Format画面。PLATEAU Context、3D Tiles、CityGMLも並んで表示されている](/images/revitgeosuite/export-geopackage-and-shapefiles-1.png)
+</Steps>
+
+### ビューと出力フォルダを設定する
+
+<Steps>
+1. **GeoPackage Export** パネル（タブ **1 Views**）で、**Output folder** の
+   横にある **Browse…** をクリックします。
+   ![Output folderの横のBrowseボタンがハイライトされ、左にビューリスト、右にFeaturesチップとAdvanced optionsが表示されたGeoPackage ExportのViewsタブ](/images/revitgeosuite/export-geopackage-and-shapefiles-2.png)
+
+2. 書き出し先のフォルダに移動し、**Select Folder** をクリックします。
+   ![GeoPackage出力フォルダを選択するWindowsのフォルダピッカー](/images/revitgeosuite/export-geopackage-and-shapefiles-3.png)
+
+3. フォルダを設定したら、**Output format** で **GeoPackage (.gpkg)** か
+   **Shapefile (.shp)** を選択します。ビューリスト上部のフィルター欄で
+   絞り込みを行い、書き出すプランビューにチェックを入れます。
+   **FEATURES** チップ（unit、detail、opening、level、fixture）は
+   エクスポートされるフィーチャーレイヤーを示します。準備ができたら
+   **Preview →** をクリックするか、先に Advanced options を設定します。
+   ![出力フォルダが入力され、フィルターを適用して31ビューにチェックが入った状態のGeoPackage ExportのViewsタブ](/images/revitgeosuite/export-geopackage-and-shapefiles-4.png)
+</Steps>
+
+### Advanced optionsを設定する（任意）
+
+<Steps>
+1. **Advanced options** をクリックしてセクションを展開します。
+   上部には座標と出力に関する設定が表示されます：
+   - **Coordinates** — ソース座標系（デフォルト：Shared coordinates）と
+     **Target EPSG** コード。Revitプロジェクトから読み取られます。
+     別のCRSへ変換する場合のみ変更してください。
+   - **Output options** — **Diagnostics report**、**Package output**、
+     **Package legend**、**Validate after write**、**Generate QGIS
+     artifacts** を必要に応じて有効にします。
+   - **Packaging** — 出力ファイルの整理方法（**Per view / feature files**
+     またはまとめて出力）と、変更されたビューのみ処理する
+     **Incremental export** を設定します。
+   ![Advanced optionsパネル（上部）：Coordinates、Output options、Packagingセクションが表示されている](/images/revitgeosuite/export-geopackage-and-shapefiles-5.png)
+
+2. 下にスクロールして残りの設定を確認します：
+   - **Data sources** — **Unit geometry** と **Unit attributes** で
+     ユニットレイヤーを生成するRevit要素カテゴリを指定します
+     （デフォルト：Floors）。**Room category parameter** は部屋名として
+     使用するRevitパラメーターを指定します。**Schema** は出力スキーマを
+     選択します（デフォルト：**Core IMDF** でIMDF準拠の出力）。
+     **Validation policy** は出力の検証の厳しさを制御します。
+   - **Linked models** — **Include linked models** にチェックを入れると
+     Revitリンクファイルの形状も含まれます。
+   - **Geometry** — **Simplify stair units** と **Simplify escalator units**
+     は複雑な形状を簡略化します。**Open output folder** はエクスポート後に
+     出力フォルダを自動的に開きます。**Launch QGIS** はQGISを起動します。
+     **Use 3D section box export** は **Below floor** / **Above floor**
+     オフセット（デフォルト：−0.5 m / 1.5 m）で形状を垂直にクリップします。
+     **Keep temporary 3D views** はエクスポート中に生成された一時ビューを
+     保持します。
+
+   設定が完了したら **Preview →** をクリックします。
+   ![Advanced optionsパネル（下部）：Data sources、Linked models、Geometryセクションが表示され、Previewボタンがハイライトされている](/images/revitgeosuite/export-geopackage-and-shapefiles-7.png)
+</Steps>
+
+### エクスポートをプレビューする
+
+<Steps>
+1. **2 Preview** タブが開き、インタラクティブなフロアプランが表示されます。
+   **Controls** パネルでビューを切り替えたり、フィーチャーレイヤーの
+   表示/非表示を切り替えたり、**Warnings**（警告）・
+   **Unassigned**（未割り当て）・**Overrides**（上書き）でフィルタリングが
+   できます。
+   ![フロアプランが表示され、左側にControlsパネルがハイライトされたGeoPackage ExportのPreviewタブ](/images/revitgeosuite/export-geopackage-and-shapefiles-8.png)
+</Steps>
+
+### フロアタイプのカテゴリを割り当てる
+
+<Steps>
+1. 未割り当てのフロアタイプがある場合は、ヘッダーバーの
+   **Category assignments (N)** をクリックします。
+   ![ヘッダーのCategory assignmentsボタンがハイライトされたGeoPackage ExportのPreviewタブ](/images/revitgeosuite/export-geopackage-and-shapefiles-9.png)
+
+2. **Category assignments** ダイアログには、選択したビューで検出された
+   すべてのRevit Floor Typeが一覧表示されます。各フロアタイプに対して
+   ドロップダウンから対応するIMDFカテゴリを選択します（例：`walkway`、
+   `restroom.female`、`restroom.male`）。IMDFカテゴリに対応しないタイプは
+   **unspecified** のままにします。完了したら **Close** をクリックします。
+   ![Revit Floor TypeとIMDFカテゴリのドロップダウンが並んだテーブルが表示されたCategory assignmentsダイアログ](/images/revitgeosuite/export-geopackage-and-shapefiles-10.png)
+
+3. ダイアログを閉じると、ステータスバーの未割り当て件数が0になります。
+   フロアプランを確認したら **Export →** をクリックします。
+   ![未割り当てフロアタイプが0件になり、Exportボタンがハイライトされたプレビュータブ](/images/revitgeosuite/export-geopackage-and-shapefiles-11.png)
+</Steps>
+
+<Aside type="tip">
+  カテゴリの割り当ては、RevitのFloor TypeをIMDFのユニットカテゴリに
+  マッピングすることで、後続ツールがスペースを正しく分類できるようにする
+  ためのものです（例：walkway、restroom）。**unspecified** のままにすること
+  も有効で、その場合は出力でそのスペースにIMDFカテゴリが付与されません。
+</Aside>
+
+### エクスポートして結果を確認する
+
+<Steps>
+1. **3 Export** タブでファイルの書き出し進捗が表示されます。
+   ![プログレスバーが表示されたExport Progressスクリーン](/images/revitgeosuite/export-geopackage-and-shapefiles-12.png)
+
+2. 完了すると **Export Results** 画面に処理したビュー数、書き出したファイル数、
+   フィーチャー数、警告数のサマリーが表示されます。**Open folder** で
+   出力フォルダを開くか、**Done** で画面を閉じます。
+   ![エクスポートの統計情報とOpen folder・Doneボタンが表示されたExport Results画面](/images/revitgeosuite/export-geopackage-and-shapefiles-13.png)
+</Steps>

@@ -100,6 +100,11 @@ export default defineConfig({
                   translations: { ja: "CityGMLのエクスポート" },
                   slug: "revitgeosuite/export-citygml",
                 },
+                {
+                  label: "Export GeoPackage / Shapefile",
+                  translations: { ja: "GeoPackage / Shapefileのエクスポート" },
+                  slug: "revitgeosuite/export-geopackage-shapefile",
+                },
               ],
             },
           ],

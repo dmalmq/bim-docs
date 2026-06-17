@@ -1,0 +1,121 @@
+---
+title: Export GeoPackage / Shapefile
+description: Export georeferenced floor-plan GIS packages from Revit plan views as GeoPackage or Shapefile.
+---
+
+import { Steps, Aside } from "@astrojs/starlight/components";
+
+RevitGeoSuite can export floor-plan geometry from Revit plan views as
+GeoPackage (.gpkg) or Shapefile (.shp), with IMDF-compliant feature layers
+for use in GIS tools such as QGIS.
+
+### Choose Export Format
+
+<Steps>
+1. Open **Export** (the **EXP** icon) in RevitGeoSuite, then select
+   **GeoPackage / Shapefile**.
+   ![RevitGeoSuite Choose Export Format screen with GeoPackage / Shapefile selected, alongside PLATEAU Context, 3D Tiles, and CityGML](/images/revitgeosuite/export-geopackage-and-shapefiles-1.png)
+</Steps>
+
+### Select views and set output folder
+
+<Steps>
+1. In the **GeoPackage Export** panel (tab **1 Views**), click **Browse…**
+   next to **Output folder**.
+   ![GeoPackage Export Views tab with the Browse button next to Output folder highlighted, views list on the left, and Features chips and Advanced options visible on the right](/images/revitgeosuite/export-geopackage-and-shapefiles-2.png)
+
+2. Navigate to the destination folder and click **Select Folder**.
+   ![Windows folder picker for selecting the GeoPackage output folder](/images/revitgeosuite/export-geopackage-and-shapefiles-3.png)
+
+3. With the folder set, choose which **Output format** to use —
+   **GeoPackage (.gpkg)** or **Shapefile (.shp)**. Use the filter field above
+   the view list to narrow results, then check the plan views you want to
+   include. The **FEATURES** chips (unit, detail, opening, level, fixture)
+   show which feature layers will be exported. Click **Preview →** when
+   ready, or continue to Advanced options first.
+   ![GeoPackage Export Views tab with the output folder filled in, a filter applied to the view list, 31 views checked, and the Preview button visible](/images/revitgeosuite/export-geopackage-and-shapefiles-4.png)
+</Steps>
+
+### Configure Advanced options (optional)
+
+<Steps>
+1. Click **Advanced options** to expand the section. The top portion covers
+   coordinate and output settings:
+   - **Coordinates** — source coordinate system (default: Shared coordinates)
+     and **Target EPSG** code. These are read from the Revit project; change
+     only if you need to reproject the output.
+   - **Output options** — enable **Diagnostics report**, **Package output**,
+     **Package legend**, **Validate after write**, or **Generate QGIS
+     artifacts** as needed.
+   - **Packaging** — controls how output files are organized (**Per view /
+     feature files** or combined) and whether **Incremental export** processes
+     only views that have changed.
+   ![Advanced options panel (top) showing Coordinates, Output options, and Packaging sections](/images/revitgeosuite/export-geopackage-and-shapefiles-5.png)
+
+2. Scroll down for the remaining settings:
+   - **Data sources** — **Unit geometry** and **Unit attributes** set which
+     Revit element category drives the unit layer (default: Floors). **Room
+     category parameter** picks the Revit parameter used as the room name.
+     **Schema** selects the output schema (default: **Core IMDF** for
+     standard IMDF-compliant output). **Validation policy** controls how
+     strictly the export validates the output.
+   - **Linked models** — check **Include linked models** to include geometry
+     from Revit linked files.
+   - **Geometry** — **Simplify stair units** and **Simplify escalator units**
+     reduce complex geometry. **Open output folder** automatically opens the
+     output folder after export; **Launch QGIS** opens QGIS. **Use 3D section
+     box export** clips geometry vertically using **Below floor** and **Above
+     floor** offsets (default: −0.5 m / 1.5 m). **Keep temporary 3D views**
+     retains the intermediate views created during export.
+
+   When all settings are configured, click **Preview →**.
+   ![Advanced options panel (bottom) showing Data sources, Linked models, and Geometry sections, with the Preview button highlighted](/images/revitgeosuite/export-geopackage-and-shapefiles-7.png)
+</Steps>
+
+### Preview the export
+
+<Steps>
+1. The **2 Preview** tab opens with an interactive floor plan. Use the
+   **Controls** panel to switch between views, toggle feature layers on or
+   off, and filter the display by **Warnings**, **Unassigned** elements, or
+   **Overrides**.
+   ![GeoPackage Export Preview tab showing the floor plan with the Controls panel highlighted on the left](/images/revitgeosuite/export-geopackage-and-shapefiles-8.png)
+</Steps>
+
+### Assign floor type categories
+
+<Steps>
+1. If any floor types are unassigned, click **Category assignments (N)** in
+   the header bar.
+   ![GeoPackage Export Preview tab with the Category assignments button highlighted in the header](/images/revitgeosuite/export-geopackage-and-shapefiles-9.png)
+
+2. The **Category assignments** dialog lists all Revit Floor Types detected in
+   the selected views. For each floor type, choose the matching IMDF category
+   from the dropdown (for example: `walkway`, `restroom.female`,
+   `restroom.male`). Leave **unspecified** for types that do not map to an
+   IMDF category. Click **Close** when done.
+   ![Category assignments dialog showing a table of Revit Floor Types with IMDF category dropdowns](/images/revitgeosuite/export-geopackage-and-shapefiles-10.png)
+
+3. After closing the dialog the unassigned count in the status bar drops to 0.
+   Review the floor plan once more, then click **Export →**.
+   ![GeoPackage Export Preview tab showing 0 unassigned floor types with the Export button highlighted](/images/revitgeosuite/export-geopackage-and-shapefiles-11.png)
+</Steps>
+
+<Aside type="tip">
+  Category assignments map Revit Floor Types to IMDF unit categories so
+  downstream tools can correctly classify spaces (e.g. walkways, restrooms).
+  Leaving a type as **unspecified** is valid — it simply means that space will
+  have no IMDF category in the output.
+</Aside>
+
+### Export and review results
+
+<Steps>
+1. The **3 Export** tab shows export progress while the files are written.
+   ![GeoPackage Export tab showing the Export Progress screen with a progress bar](/images/revitgeosuite/export-geopackage-and-shapefiles-12.png)
+
+2. When complete, the **Export Results** screen shows a summary: number of
+   views processed, files written, features exported, and any warnings. Click
+   **Open folder** to browse the output files, or **Done** to close.
+   ![GeoPackage Export Results screen showing export summary statistics and Open folder / Done buttons](/images/revitgeosuite/export-geopackage-and-shapefiles-13.png)
+</Steps>
